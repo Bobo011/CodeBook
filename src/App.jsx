@@ -1,6 +1,7 @@
 import './App.css'
 import { Footer,Header } from './components'
 import { AllRoutes } from './routes/AllRoutes'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
     <Header />
   <AllRoutes />
   <Footer />
+  
     </>
   )
 }
