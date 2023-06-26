@@ -16,7 +16,7 @@ export const ProductsList = () => {
       setProducts(data);
     }
     fetchProducts();
-  }, []);
+  }, [searchTerm]);
 
   return (
     <main>
