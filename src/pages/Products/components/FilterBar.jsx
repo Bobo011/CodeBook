@@ -48,7 +48,13 @@ export const FilterBar = ({ setShow }) => {
               <p className="font-semibold my-1">Sort by</p>
               <div className="flex items-center my-1">
                 <input
-                
+                  onChange={() =>
+                    dispatch({
+                      type: "SORT_BY",
+                      payload: { sortBy: "lowtohigh" },
+                    })
+                  }
+                  checked={state.sortBy === "lowtohigh" || false}
                   id="price-sort-1"
                   type="radio"
                   value=""
@@ -64,6 +70,13 @@ export const FilterBar = ({ setShow }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
+                  onChange={() =>
+                    dispatch({
+                      type: "SORT_BY",
+                      payload: { sortBy: "highttolow" },
+                    })
+                  }
+                  checked={state.sortBy === "highttolow" || false}
                   id="price-sort-2"
                   type="radio"
                   value=""
@@ -82,8 +95,13 @@ export const FilterBar = ({ setShow }) => {
               <span className="font-semibold">Rating</span>
               <div className="flex items-center my-1">
                 <input
-                onChange={()=>dispatch({type:"RATINGS",payload:{ratings:'4STARTSABOVE' }})}
-                checked={state.ratings ==='4STARTSABOVE'||false}
+                  onChange={() =>
+                    dispatch({
+                      type: "RATINGS",
+                      payload: { ratings: "4STARTSABOVE" },
+                    })
+                  }
+                  checked={state.ratings === "4STARTSABOVE" || false}
                   id="rating-sort-1"
                   type="radio"
                   value=""
@@ -99,8 +117,13 @@ export const FilterBar = ({ setShow }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
-                onChange={()=>dispatch({type:"RATINGS",payload:{ratings:'3STARTSABOVE' }})}
-                checked={state.ratings ==='3STARTSABOVE'||false}
+                  onChange={() =>
+                    dispatch({
+                      type: "RATINGS",
+                      payload: { ratings: "3STARTSABOVE" },
+                    })
+                  }
+                  checked={state.ratings === "3STARTSABOVE" || false}
                   id="rating-sort-2"
                   type="radio"
                   value=""
@@ -116,8 +139,13 @@ export const FilterBar = ({ setShow }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
-                onChange={()=>dispatch({type:"RATINGS",payload:{ratings:'2STARTSABOVE' }})}
-                checked={state.ratings ==='2STARTSABOVE'||false}
+                  onChange={() =>
+                    dispatch({
+                      type: "RATINGS",
+                      payload: { ratings: "2STARTSABOVE" },
+                    })
+                  }
+                  checked={state.ratings === "2STARTSABOVE" || false}
                   id="rating-sort-3"
                   type="radio"
                   value=""
@@ -133,8 +161,13 @@ export const FilterBar = ({ setShow }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
-                onChange={()=>dispatch({type:"RATINGS",payload:{ratings:'1STARTSABOVE' }})}
-                checked={state.ratings ==='1STARTSABOVE'||false}
+                  onChange={() =>
+                    dispatch({
+                      type: "RATINGS",
+                      payload: { ratings: "1STARTSABOVE" },
+                    })
+                  }
+                  checked={state.ratings === "1STARTSABOVE" || false}
                   id="rating-sort-4"
                   type="radio"
                   value=""
@@ -152,8 +185,14 @@ export const FilterBar = ({ setShow }) => {
             <li className="mt-1 mb-5">
               <span className="font-semibold">Other Filters</span>
               <div className="flex items-center my-1">
-                <input onChange={()=>dispatch({type:'BEST_SELLER',payload:{bestSellerOnly:!state.bestSellerOnly}})}
-                checked={state.bestSellerOnly ||false}
+                <input
+                  onChange={() =>
+                    dispatch({
+                      type: "BEST_SELLER",
+                      payload: { bestSellerOnly: !state.bestSellerOnly },
+                    })
+                  }
+                  checked={state.bestSellerOnly || false}
                   id="best-seller"
                   type="checkbox"
                   value=""
@@ -168,8 +207,13 @@ export const FilterBar = ({ setShow }) => {
               </div>
               <div className="flex items-center my-1">
                 <input
-                onChange={()=>dispatch({type:"ONLY_IN_STOCK",payload:{onlyInStock:!state.onlyInStock}})}
-                checked={state.onlyInStock ||false}
+                  onChange={() =>
+                    dispatch({
+                      type: "ONLY_IN_STOCK",
+                      payload: { onlyInStock: !state.onlyInStock },
+                    })
+                  }
+                  checked={state.onlyInStock || false}
                   id="only-instock"
                   type="checkbox"
                   value=""
@@ -185,6 +229,7 @@ export const FilterBar = ({ setShow }) => {
             </li>
             <li className="mt-1 mb-5 px-1">
               <button
+                onClick={() => dispatch({ type: "CLEAR_FILTER" })}
                 type="button"
                 className="text-dark bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-10 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               >

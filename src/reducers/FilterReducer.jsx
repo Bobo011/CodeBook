@@ -3,24 +3,30 @@ export const FilterReducer = (state, action) => {
 
   switch (type) {
     case "PRODUCT_LIST":
-      return {productList:payload.products};
+      return { productList: payload.products };
 
     case "SORT_BY":
-      return;
+      return { ...state, sortBy: payload.sortBy };
 
     case "RATINGS":
-      return {...state, ratings:payload.ratings};
+      return { ...state, ratings: payload.ratings };
 
     case "BEST_SELLER":
-      return {...state, bestSellerOnly:payload.bestSellerOnly};
+      return { ...state, bestSellerOnly: payload.bestSellerOnly };
 
-      case "ONLY_IN_STOCK":
-      return {...state, onlyInStock:payload.onlyInStock};
+    case "ONLY_IN_STOCK":
+      return { ...state, onlyInStock: payload.onlyInStock };
 
-      case "CLEAR_FILTER":
-        return;
+    case "CLEAR_FILTER":
+      return {
+        ...state,
+        onlyInStock: false,
+        bestSellerOnly: false,
+        sortBy: null,
+        ratings: null,
+      };
 
-        default :
-        throw new Error('No Case Found')
+    default:
+      throw new Error("No Case Found");
   }
 };
