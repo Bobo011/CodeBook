@@ -22,6 +22,11 @@ const response = await fetch('http://localhost:8000/register', requestOptions
 const data =await response.json()
 data.accessToken ? navigate('/products'):  toast.error(data)
 
+if(data.accessToken){
+  sessionStorage.setItem('token',JSON.stringify(data.accessToken))
+  sessionStorage.setItem('cbid',JSON.stringify(data.user.id))
+}
+
 }
 
   return (
