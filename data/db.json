@@ -239,15 +239,7 @@
   ],
   "orders": [],
   "users": [
-    {
-      "id": 1,
-      "name": "John Doe"
-    },
-    {
-      "id": 2,
-      "name": "Jane Smith"
-    },
-    {
+        {
       "email": "example@gmail.com",
       "password": "$2a$10$AY9CwfDdATjJuKYbh/oHzeGkR.pMZOM8EIHaKwKFJyZv/S542Z5Pi",
       "name": "George",
