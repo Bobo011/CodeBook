@@ -1,3 +1,3 @@
-export {FilterProvider} from './FilterContext'
-export {useFilter} from './FilterContext'
+export {FilterProvider,useFilter} from './FilterContext'
+export {useCart,CartProvider} from './CartContext'
 
