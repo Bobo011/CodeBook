@@ -6,3 +6,7 @@ export {Login} from './Login'
 export {Register} from './Register'
 
 export {CartPage} from './Cart/CartPage'
+
+export {OrderPage} from './Order/OrderPage'
+export {OrderFail} from './Order/components/OrderFail'
+export {OrderSuccess} from './Order/components/OrderSuccess'
