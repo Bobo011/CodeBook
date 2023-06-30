@@ -239,7 +239,7 @@
   ],
   "orders": [],
   "users": [
-        {
+    {
       "email": "example@gmail.com",
       "password": "$2a$10$AY9CwfDdATjJuKYbh/oHzeGkR.pMZOM8EIHaKwKFJyZv/S542Z5Pi",
       "name": "George",
@@ -250,6 +250,12 @@
       "password": "$2a$10$K6agSlbrH6ZxXB7A89zDWuDtB5gd878K0pkkgp1KjslIk.9.BbhVG",
       "name": "George",
       "id": 4
+    },
+    {
+      "email": "anna@example.com",
+      "password": "$2a$10$FeVpGG3Grz0/d1RiGcABVeGPEVZaoyxXvIm0n0j2Af2dO1i7TDl6O",
+      "name": "Anna",
+      "id": 5
     }
   ]
 }

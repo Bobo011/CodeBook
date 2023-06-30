@@ -26,7 +26,7 @@ function handleLogOut(){
             </li>
         </ul>
         <div className="py-1">
-            <span onClick={handleLogOut} className="cursor-pointer block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-dark dark:text-gray-200 dark:hover:text-white">Log out</span>
+            <span onClick={handleLogOut} className="cursor-pointer block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-dark  dark:hover:text-white">Log out</span>
         </div>
     </div>
   )
