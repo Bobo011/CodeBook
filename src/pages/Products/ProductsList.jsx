@@ -8,19 +8,29 @@ import { FilterBar } from "./components/FilterBar";
 
 import { useFilter } from "../../context";
 import { getProductList } from "../../services";
+import { toast } from "react-toastify";
 
 export const ProductsList = () => {
   const { products, initialProductList } = useFilter();
   const [show, setShow] = useState(false);
   const search = useLocation().search;
+  
   const searchTerm = new URLSearchParams(search).get("q");
   useTitle("Explore eBooks Collection");
 
   useEffect(() => {
     async function fetchProducts() {
-      const data = await getProductList(searchTerm);
+      try {
+        const data = await getProductList(searchTerm);
       initialProductList(data);
-    }
+      } catch (error) {
+        toast.error(error.message, {
+          closeButton:true,
+          position: "bottom-center",
+          closeOnClick: true,
+        })
+      }
+     }
     fetchProducts();
   }, [searchTerm]);
 
@@ -53,6 +63,7 @@ export const ProductsList = () => {
         </div>
 
         <div className="flex flex-wrap justify-center lg:flex-row">
+         
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

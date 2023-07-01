@@ -4,14 +4,25 @@ import {useTitle} from '../../hooks/useTitle'
 
 import { useEffect, useState } from "react";
 import { getUserOrders } from "../../services";
+import { toast } from "react-toastify";
 
 export const DashboardPage = () => {
   const [orders,setOrders]= useState([])
   useTitle('DashBoard');
   useEffect(()=>{
 async function fetchOrders(){
-  const data = await getUserOrders()
+
+  try {
+    const data = await getUserOrders()
   setOrders(data)
+  } catch (error) {
+    toast.error(error.message, {
+      closeButton:true,
+      position: "bottom-center",
+      closeOnClick: true,
+    })
+  }
+  
 }
 fetchOrders();
 })
