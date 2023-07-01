@@ -1,9 +1,10 @@
+import {useTitle} from '../hooks/useTitle'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register } from "../services/authService";
 
 export const Register = () => {
-
+  useTitle('Register')
 const navigate = useNavigate();
 
 async function handleRegister(event){
