@@ -1,3 +1,5 @@
+const host = import.meta.env.VITE_REACT_APP_HOST;
+
 export async function login(authDetail) {
   const requestOptions = {
     method: "POST",
@@ -5,7 +7,7 @@ export async function login(authDetail) {
     body: JSON.stringify(authDetail),
   };
 
-  const response = await fetch("http://localhost:8000/login", requestOptions);
+  const response = await fetch(`${host}/login`, requestOptions);
 
   if (!response.ok) {
     throw {
@@ -30,7 +32,7 @@ export async function register(authDetail) {
     body: JSON.stringify(authDetail),
   };
   const response = await fetch(
-    "http://localhost:8000/register",
+    `${host}/register`,
     requestOptions
   );
   

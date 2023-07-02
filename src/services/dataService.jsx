@@ -1,3 +1,5 @@
+const host = import.meta.env.VITE_REACT_APP_HOST;
+
 function getSession(){
     const token = JSON.parse(sessionStorage.getItem("token"));
   const cbid = JSON.parse(sessionStorage.getItem("cbid"));
@@ -17,7 +19,7 @@ export async function getUser(){
     },
   };
   const response = await fetch(
-    `http://localhost:8000/600/users/${browserData.cbid}`,
+    `${host}/600/users/${browserData.cbid}`,
     requestOptions
   );
   if(!response.ok){
@@ -37,7 +39,7 @@ headers: {
   Authorization: `Bearer ${browserData.token}`,
 },}
 
-    const response = await fetch(`http://localhost:8000/660/orders?user.id=${browserData.cbid}`,requestOptions
+    const response = await fetch(`${host}/660/orders?user.id=${browserData.cbid}`,requestOptions
   );
   if(!response.ok){
     throw {
@@ -66,7 +68,7 @@ const requestOptions = {
             id: user.id
         }
     }
-    const response = await fetch("http://localhost:8000/660/orders",requestOptions );
+    const response = await fetch(`${host}/660/orders`,requestOptions );
 
     if(!response.ok){
       throw {
