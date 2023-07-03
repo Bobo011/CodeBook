@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Rating } from "../components";
@@ -8,34 +7,36 @@ import { getProduct } from "../services";
 import { toast } from "react-toastify";
 
 export const ProductDetail = () => {
-
+  // Access the cartList, addToCart, and removeFromCart functions from the cart context
   const { cartList, addToCart, removeFromCart } = useCart();
 
+  // State variables to store the product and the cart status
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const [inCart, setInCart] = useState(false);
+
+  // Set the document title to the product name
   useTitle(product.name);
 
   useEffect(() => {
-    async function fetchProducts() {
-try {
-  const data =await getProduct(id)
-  setProduct(data);
-} catch (error) {
-  toast.error(error.message, {
-    closeButton:true,
-    position: "bottom-center",
-    closeOnClick: true,
-  })
-  console.log(error);
-}
-
-     
+    async function fetchProduct() {
+      try {
+        const data = await getProduct(id);
+        setProduct(data);
+      } catch (error) {
+        toast.error(error.message, {
+          closeButton: true,
+          position: "bottom-center",
+          closeOnClick: true,
+        });
+        console.log(error);
+      }
     }
-    fetchProducts();
+    fetchProduct();
   }, [id]);
 
   useEffect(() => {
+    // Check if the product is already in the cartList
     const productInCart = cartList.find((item) => item.id === product.id);
     if (productInCart) {
       setInCart(true);
@@ -55,7 +56,11 @@ try {
         </p>
         <div className="flex flex-wrap justify-around">
           <div className="max-w-xl my-3">
-            <img className="rounded" src={product.poster} alt={product.name} />
+            <img
+              className="rounded"
+              src={product.poster}
+              alt={product.name}
+            />
           </div>
           <div className="max-w-xl my-3">
             <p className="text-3xl font-bold text-gray-900 dark:text-slate-200">
@@ -88,19 +93,28 @@ try {
               </span>
             </p>
             <p className="my-3">
-            {!inCart && <button
-                onClick={() => addToCart(product)}
-                className={`inline-flex items-center py-2 px-5 text-lg font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 ${product.in_stock ? '': 'cursor-not-allowed'}`}
-                disabled={product.in_stock ? "" : "disabled"}
-              >
-                Add To Cart <i className="ml-1 bi bi-plus-lg"></i>
-              </button> } 
-            {inCart && <button onClick={() => removeFromCart(product)}
-                className={`inline-flex items-center py-2 px-5 text-lg font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 `}
-                disabled={product.in_stock ? "" : "disabled"}
-              >
-                Remove Item <i className="ml-1 bi bi-trash3"></i>
-              </button> }  
+              {/* Display "Add To Cart" button if the product is not already in the cart */}
+              {!inCart && (
+                <button
+                  onClick={() => addToCart(product)}
+                  className={`inline-flex items-center py-2 px-5 text-lg font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 ${
+                    product.in_stock ? "" : "cursor-not-allowed"
+                  }`}
+                  disabled={product.in_stock ? "" : "disabled"}
+                >
+                  Add To Cart <i className="ml-1 bi bi-plus-lg"></i>
+                </button>
+              )}
+              {/* Display "Remove Item" button if the product is already in the cart */}
+              {inCart && (
+                <button
+                  onClick={() => removeFromCart(product)}
+                  className="inline-flex items-center py-2 px-5 text-lg font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800"
+                  disabled={product.in_stock ? "" : "disabled"}
+                >
+                  Remove Item <i className="ml-1 bi bi-trash3"></i>
+                </button>
+              )}
             </p>
             <p className="text-lg text-gray-900 dark:text-slate-200">
               {product.long_description}

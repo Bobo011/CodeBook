@@ -1,34 +1,37 @@
-import {useTitle} from '../hooks/useTitle'
+import { useTitle } from '../hooks/useTitle';
 import { useRef } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import {login} from '../services/'
-
+import { login } from '../services/';
 
 export const Login = () => {
-  useTitle('Login')
-  const navigate = useNavigate();
-  const email = useRef();
-  const password = useRef();
+  useTitle('Login'); // Custom hook to update the document title
+  
+  const navigate = useNavigate(); // React Router hook for navigation
+  const email = useRef(); // Reference to the email input field
+  const password = useRef(); // Reference to the password input field
 
   async function handleLogin(event) {
-    event.preventDefault();
-try {
-  const authDetail = {
-    email: email.current.value,
-    password: password.current.value,
-  };
-  const data = await login(authDetail)
-  data.accessToken ? navigate("/products") : toast.error(data);
-} catch (error) {
-  toast.error(error.message, {
-    closeButton:true,
-    position: "bottom-center",
-    closeOnClick: true,
-  })
-}
-   
- 
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    try {
+      const authDetail = {
+        email: email.current.value,
+        password: password.current.value,
+      };
+      const data = await login(authDetail); // Call the login service function
+
+      // Check if the login was successful
+      data.accessToken ? navigate("/products") : toast.error(data);
+    } catch (error) {
+      // Display an error toast message if an error occurred
+      toast.error(error.message, {
+        closeButton: true,
+        position: "bottom-center",
+        closeOnClick: true,
+      });
+      console.log(error);
+    }
   }
 
   return (

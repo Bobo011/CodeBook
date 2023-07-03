@@ -1,38 +1,36 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useTitle } from "../../hooks/useTitle";
-
-
 import { ProductCard } from "../../components";
 import { FilterBar } from "./components/FilterBar";
-
 import { useFilter } from "../../context";
 import { getProductList } from "../../services";
 import { toast } from "react-toastify";
 
 export const ProductsList = () => {
-  const { products, initialProductList } = useFilter();
-  const [show, setShow] = useState(false);
-  const search = useLocation().search;
-  
-  const searchTerm = new URLSearchParams(search).get("q");
-  useTitle("Explore eBooks Collection");
+  const { products, initialProductList } = useFilter(); // Accessing products and initialProductList from the filter context
+  const [show, setShow] = useState(false); // State variable to control the visibility of the FilterBar component
+  const search = useLocation().search; // Accessing the search query parameters from the current URL
+
+  const searchTerm = new URLSearchParams(search).get("q"); // Extracting the value of the "q" query parameter
+
+  useTitle("Explore eBooks Collection"); // Custom hook to set the page title
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const data = await getProductList(searchTerm);
-      initialProductList(data);
+        const data = await getProductList(searchTerm); // Fetching the product list based on the search term
+        initialProductList(data); // Updating the initial product list in the context
       } catch (error) {
         toast.error(error.message, {
-          closeButton:true,
+          closeButton: true,
           position: "bottom-center",
           closeOnClick: true,
-        })
+        });
         console.log(error);
       }
-     }
-    fetchProducts();
+    }
+    fetchProducts(); // Fetching the products on component mount or when the search term changes
   }, [searchTerm]);
 
   return (
@@ -64,14 +62,13 @@ export const ProductsList = () => {
         </div>
 
         <div className="flex flex-wrap justify-center lg:flex-row">
-         
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
-
-      {show && <FilterBar setShow={setShow} />}
+{/* Render the FilterBar component when show is true */}
+      {show && <FilterBar setShow={setShow} />} 
     </main>
   );
 };

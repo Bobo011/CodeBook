@@ -5,6 +5,7 @@ export const FilterBar = ({ setShow }) => {
 
   return (
     <section className="filter">
+      {/* Filter container */}
       <div
         id="drawer-disable-body-scrolling"
         className={`fixed z-40 h-screen p-5 overflow-y-auto bg-darkBlue w-72 dark:bg-gray-800 transition-transhtmlForm left-0 top-0 transhtmlForm-none`}
@@ -13,12 +14,14 @@ export const FilterBar = ({ setShow }) => {
         aria-modal="true"
         role="dialog"
       >
+        {/* Filter header */}
         <h5
           id="drawer-disable-body-scrolling-label"
           className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
         >
           Filters
         </h5>
+        {/* Close button */}
         <button
           onClick={() => setShow(false)}
           type="button"
@@ -41,11 +44,15 @@ export const FilterBar = ({ setShow }) => {
           </svg>
           <span className="sr-only">Close Filters</span>
         </button>
+        {/* Divider line */}
         <div className="border-b pb-3"></div>
+        {/* Filter options */}
         <div className="py-4 overflow-y-auto">
           <ul className="text-slate-700 dark:text-slate-100">
+            {/* Sort by price */}
             <li className="mt-1 mb-5">
               <p className="font-semibold my-1">Sort by</p>
+              {/* Price - Low to High */}
               <div className="flex items-center my-1">
                 <input
                   onChange={() =>
@@ -68,6 +75,7 @@ export const FilterBar = ({ setShow }) => {
                   Price - Low to High
                 </label>
               </div>
+              {/* Price - High to Low */}
               <div className="flex items-center my-1">
                 <input
                   onChange={() =>
@@ -91,8 +99,10 @@ export const FilterBar = ({ setShow }) => {
                 </label>
               </div>
             </li>
+            {/* Filter by rating */}
             <li className="mt-1 mb-5">
               <span className="font-semibold">Rating</span>
+              {/* 4 Stars & Above */}
               <div className="flex items-center my-1">
                 <input
                   onChange={() =>
@@ -115,6 +125,7 @@ export const FilterBar = ({ setShow }) => {
                   4 Stars & Above
                 </label>
               </div>
+              {/* 3 Stars & Above */}
               <div className="flex items-center my-1">
                 <input
                   onChange={() =>
@@ -137,6 +148,7 @@ export const FilterBar = ({ setShow }) => {
                   3 Stars & Above
                 </label>
               </div>
+              {/* 2 Stars & Above */}
               <div className="flex items-center my-1">
                 <input
                   onChange={() =>
@@ -159,6 +171,7 @@ export const FilterBar = ({ setShow }) => {
                   2 Stars & Above
                 </label>
               </div>
+              {/* 1 Stars & Above */}
               <div className="flex items-center my-1">
                 <input
                   onChange={() =>
@@ -182,8 +195,10 @@ export const FilterBar = ({ setShow }) => {
                 </label>
               </div>
             </li>
+            {/* Other Filters */}
             <li className="mt-1 mb-5">
               <span className="font-semibold">Other Filters</span>
+              {/* Best Seller Only */}
               <div className="flex items-center my-1">
                 <input
                   onChange={() =>
@@ -205,6 +220,7 @@ export const FilterBar = ({ setShow }) => {
                   Best Seller Only
                 </label>
               </div>
+              {/* In Stock Only */}
               <div className="flex items-center my-1">
                 <input
                   onChange={() =>
@@ -223,17 +239,18 @@ export const FilterBar = ({ setShow }) => {
                   htmlFor="only-instock"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                  INSTOCK Only
+                  In Stock Only
                 </label>
               </div>
             </li>
+            {/* Clear Filters */}
             <li className="mt-1 mb-5 px-1">
               <button
                 onClick={() => dispatch({ type: "CLEAR_FILTER" })}
                 type="button"
                 className="text-dark bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-10 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               >
-                Clear Filter
+                Clear Filters
               </button>
             </li>
           </ul>
@@ -242,3 +259,5 @@ export const FilterBar = ({ setShow }) => {
     </section>
   );
 };
+
+
