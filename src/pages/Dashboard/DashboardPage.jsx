@@ -21,6 +21,7 @@ async function fetchOrders(){
       position: "bottom-center",
       closeOnClick: true,
     })
+    console.log(error);
   }
   
 }

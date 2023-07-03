@@ -29,6 +29,7 @@ export const ProductsList = () => {
           position: "bottom-center",
           closeOnClick: true,
         })
+        console.log(error);
       }
      }
     fetchProducts();

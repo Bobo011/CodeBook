@@ -25,6 +25,7 @@ export const Checkout = ({ setCheckout }) => {
         position: "bottom-center",
         closeOnClick: true,
       })
+      console.log(error);
      }
       
     }
@@ -44,6 +45,7 @@ export const Checkout = ({ setCheckout }) => {
         position: "bottom-center",
         closeOnClick: true,
       })
+      console.log(error);
         navigate("/order-summary", { state: {status: false} });
     }
   }

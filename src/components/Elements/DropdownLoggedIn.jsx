@@ -19,6 +19,7 @@ export const DropdownLoggedIn = ({setDropdown}) => {
                     position: "bottom-center",
                     closeOnClick: true,
                   })
+                  console.log(error);
             }
             
         }

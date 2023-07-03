@@ -16,6 +16,7 @@ export const FeaturedProducts = () => {
           position: "bottom-center",
           closeOnClick: true,
         })
+        console.log(error);
       }
      
     }
