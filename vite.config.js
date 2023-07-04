@@ -6,14 +6,23 @@ import 'dotenv/config'; // Corrected import statement
 dotenv.config();
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  resolve: {
-    alias: {
-      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+export default defineConfig(({ mode }) => {
+  // Check if the current mode is production
+  const isProduction = mode === 'production';
+
+  return {
+    resolve: {
+      alias: {
+        '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+      },
     },
-  },
-  plugins: [react()],
-  env: {
-    REACT_APP_HOST: process.env.REACT_APP_HOST,
-  },
+    plugins: [react()],
+    define: {
+      'process.env': {},
+    },
+    build: {
+      minify: isProduction,
+      sourcemap: !isProduction,
+    },
+  };
 });
