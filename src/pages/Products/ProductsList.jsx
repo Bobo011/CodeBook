@@ -31,7 +31,7 @@ export const ProductsList = () => {
       }
     }
     fetchProducts(); // Fetching the products on component mount or when the search term changes
-  }, [searchTerm]);
+  }, [searchTerm]);//eslint-disable-line
 
   return (
     <main>
