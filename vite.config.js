@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [react()],
     define: {
-      'process.env': {},
+      'process.env.VITE_REACT_APP_HOST': JSON.stringify(process.env.REACT_APP_HOST),
     },
     build: {
       minify: isProduction,
