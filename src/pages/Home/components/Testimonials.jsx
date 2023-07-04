@@ -18,7 +18,7 @@ export const Testimonials = () => {
             </figure>
             <figure className="flex flex-col justify-center items-center p-8 text-center bg-white rounded-tr-lg border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                 <blockquote className="mx-auto mb-4 max-w-2xl text-gray-500 lg:mb-8 dark:text-gray-400">
-                    <h3 className="text-lg font-semibold  dark:text-gray-900">Solid foundation for any project</h3>
+                    <h3 className="text-lg font-semibold  dark:text-gray-900">Solid foundation for any projects</h3>
                     <p className="my-4 font-light">Designing with Figma components that can be easily translated to the utility classes of Tailwind CSS is a huge timesaver!"</p>
                 </blockquote>
                 <figcaption className="flex justify-center items-center space-x-3">
